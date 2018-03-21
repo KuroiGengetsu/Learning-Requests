@@ -1,2 +1,6 @@
-# Learning-Requests
-Some spiders using python requests, just to practice my programming and fun.
+# 学习 Requests 库
+
+## HTTP基础
+
+首先可以通过 `HTTP`
+
