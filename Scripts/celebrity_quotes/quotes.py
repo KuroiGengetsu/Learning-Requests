@@ -20,11 +20,11 @@ class Quotes():
             for q in self.quotes:
                 f.write(q + '\n')
         
-        def set_topic(self, topic):
+    def set_topic(self, topic):
             """set the topic"""
             self.topic = topic
 
-        def set_quotes(self, quotes):
+    def set_quotes(self, quotes):
             """set the quotes"""
             self.quotes = quotes
             
