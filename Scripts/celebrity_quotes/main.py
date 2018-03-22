@@ -4,10 +4,13 @@ from celebrity_quotes import *
 
 
 def main():
-    """main function"""
+    """
+    主函数
+    """
 
     url =  'http://www.mingyannet.com/'
 
+    # 请求
     r = get_html(url)
 
     for topic, link in get_topics(r.text):

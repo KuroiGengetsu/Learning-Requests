@@ -1,4 +1,6 @@
-"""Settings.py: All configurations are here"""
+"""
+几个全局设置参数
+"""
 
 HEADERS = {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8;',

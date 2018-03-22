@@ -1,31 +1,44 @@
-"""class Quotes defines here"""
+"""定义了一个 Quotes 类"""
 
 class Quotes():
-    """This class is Quotes, which contains many quotes and a topic"""
+    """class Quotes , 用来存放 一个 topic 以及众多 quotes"""
+
     def __init__(self, topic=None, quotes=[]):
-        """Given topic and quotes, or you can define them later"""
+        """
+        创建对象的时候给定两个参数, 话题 topic 和 名言 quotes
+        
+        Parameters
+        ----------
+        :param topic: str
+            话题 topic, 例如 "创业励志名言大全"
+        :param quotes: list
+            名言
+        """
+
         self.topic = topic
         self.quotes = quotes
 
     def show(self):
-        """Show the content of the Quotes"""
+        """
+        展示一个 Quotes 类的内容
+        
+        Parameters
+        ----------
+        :rtype: None
+        """
+
         print("-----", self.topic, "-----")
         for q in self.quotes:
             print(q)
         print("end")
 
     def write(self):
-        """write informations to file"""
+        """
+        将一个 Quotes 类的信息写入文件, 为了方便起见, 以 txt 为例子
+        :rtype: None
+        """
+
         with open("./files/" + self.topic + ".txt", mode='w', encoding='UTF-8') as f:
             for q in self.quotes:
-                f.write(q + '\n')
-        
-    def set_topic(self, topic):
-            """set the topic"""
-            self.topic = topic
+                f.write(q + '\n')           
 
-    def set_quotes(self, quotes):
-            """set the quotes"""
-            self.quotes = quotes
-            
-            
