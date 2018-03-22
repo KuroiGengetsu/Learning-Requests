@@ -9,11 +9,17 @@ from quotes import Quotes
 def get_html(url):
     """get the url from web
     :param url: URL
-    :return type: Response Object
+    :rtype: Response Object
     """
 
     r = requests.get(url=url, headers=settings.HEADERS)
-    r.encoding = r.apparent_encoding
+
+    if r.encoding == 'ISO-8859-1':
+        encodings = requests.utils.get_encodings_from_content(r.text)
+        if encodings:
+            r.encoding = encodings[0]
+        else:
+            r.encoding = r.apparent_encoding
 
     if r.status_code != 200:
         print(settings.DEBUG + "Failed to get", url, ". Status code:", r.status_code)
@@ -56,7 +62,7 @@ def get_quotes(url, topic):
     return q
 
 
-TOPIC_REGEX = re.compile(r'<li><a title="(\w*)" target="_blank" href="(show/\d*)">\w*</a></li>')
+TOPIC_LINK_REGEX = re.compile(r'<a title="(.*?)".*?href="(show/\w+)">')
 
 def get_topics(text):
     """get all the topics and return a list
@@ -65,6 +71,6 @@ def get_topics(text):
     :return: the topic name and the link
     """
 
-    for topic in TOPIC_REGEX.finditer(text):
+    for topic in TOPIC_LINK_REGEX.finditer(text):
         yield topic.groups()
 
