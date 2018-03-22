@@ -38,6 +38,7 @@ def get_html(url):
 
 REMOVE = lambda x, y: x.replace(y, "")
 QUOTES_REGEX = re.compile(r'<p>(\d+、[^<]*)</p>')
+SPECIAL_SYMBOL_REGEX = re.compile(r'&\w+;')
 
 def get_quotes(url, topic):
     """get the quotes from the given url
@@ -48,7 +49,7 @@ def get_quotes(url, topic):
     quotes = QUOTES_REGEX.findall(r.text)
 
     q = Quotes(
-        quotes=[reduce(REMOVE, [s] + settings.UNWANTED) for s in quotes],
+        quotes=[reduce(REMOVE, [s] + SPECIAL_SYMBOL_REGEX.findall(s)) for s in quotes],
         topic=topic
     )
 

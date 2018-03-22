@@ -8,5 +8,3 @@ HEADERS = {
 
 DEBUG = "---DEBUG---: "
 
-UNWANTED = ["&mdash;", "&middot;", "&rdquo;", "&ldquo;", "&quot;", "&hellip;", "&amp;", "&lsquo;", "&rsquo;", "&nbsp;"]
-
