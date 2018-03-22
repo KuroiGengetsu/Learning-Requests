@@ -1,4 +1,4 @@
- """
+"""
 从 http://www.mingyannet.com/ 爬取名人名言
 """
 import re
