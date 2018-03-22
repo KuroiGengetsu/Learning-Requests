@@ -15,7 +15,7 @@ def get_html(url):
 
     r = requests.get(url=url, headers=settings.HEADERS)
 
-    if r.encoding = 'ISO-8859-1':
+    if r.encoding == 'ISO-8859-1':
         encodings = requests.utils.get_encodings_from_content(r.text)
         if encodings:
             r.encoding = encodings[0]
@@ -53,5 +53,5 @@ def get_topics(text):
     :return: the topic name and the link
     """
 
-    return TOPIC_REGEX.findall(text)
+    return TOPIC_LINK_REGEX.findall(text)
 

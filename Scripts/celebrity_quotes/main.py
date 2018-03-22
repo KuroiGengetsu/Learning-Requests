@@ -15,6 +15,6 @@ def main(topic_link):
 
 if __name__ == '__main__':
     r = get_html(URL)
-    with Pool(5) as p:
+    with Pool(100) as p:
         p.map(main, get_topics(r.text))
 
