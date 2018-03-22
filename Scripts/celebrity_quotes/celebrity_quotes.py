@@ -4,6 +4,7 @@ from functools import reduce
 import requests
 import settings
 from quotes import Quotes
+from regex import *
 
 
 def get_html(url):
@@ -13,7 +14,13 @@ def get_html(url):
     """
 
     r = requests.get(url=url, headers=settings.HEADERS)
-    r.encoding = r.apparent_encoding
+
+    if r.encoding = 'ISO-8859-1':
+        encodings = requests.utils.get_encodings_from_content(r.text)
+        if encodings:
+            r.encoding = encodings[0]
+        else:
+            r.encoding = r.apparent_encoding
 
     if r.status_code != 200:
         print(settings.DEBUG + "Failed to get", url, ". Status code:", r.status_code)
@@ -22,23 +29,6 @@ def get_html(url):
 
     return r
 
-
-# def find_topic(text, topic):
-#     """find topic from the response, and return the link
-#     :response: for example, r.text
-#     :topic: the topic you want to find, string.
-#     """
-
-#    link = re.search('<a title="%s".*href="(.*)".*' % topic, text)
-#     if link:
-#         return 'http://www.mingyannet.com/' + link.group(1)
-#     else:
-#         print(settings.DEBUG + "Can not find topic", topic)
-
-
-REMOVE = lambda x, y: x.replace(y, "")
-QUOTES_REGEX = re.compile(r'<p>(\d+、[^<]*)</p>')
-SPECIAL_SYMBOL_REGEX = re.compile(r'&\w+;')
 
 def get_quotes(url, topic):
     """get the quotes from the given url
@@ -56,8 +46,6 @@ def get_quotes(url, topic):
     return q
 
 
-TOPIC_REGEX = re.compile(r'<li><a title="(\w*)" target="_blank" href="(show/\d*)">\w*</a></li>')
-
 def get_topics(text):
     """get all the topics and return a list
     :param response: the response of the main page
@@ -65,6 +53,5 @@ def get_topics(text):
     :return: the topic name and the link
     """
 
-#    for topic in TOPIC_REGEX.finditer(text):
-#        yield topic.groups()
     return TOPIC_REGEX.findall(text)
+

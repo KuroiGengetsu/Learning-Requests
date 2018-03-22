@@ -19,13 +19,4 @@ class Quotes():
         with open("./files/" + self.topic + ".txt", mode='w', encoding='UTF-8') as f:
             for q in self.quotes:
                 f.write(q + '\n')
-        
-    def set_topic(self, topic):
-            """set the topic"""
-            self.topic = topic
 
-    def set_quotes(self, quotes):
-            """set the quotes"""
-            self.quotes = quotes
-            
-            
