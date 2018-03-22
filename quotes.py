@@ -1,4 +1,4 @@
-"""定义了一个 Quotes 类"""
+ """定义了一个 Quotes 类"""
 
 class Quotes():
     """class Quotes , 用来存放 一个 topic 以及众多 quotes"""
