@@ -5,10 +5,7 @@ class Quotes():
 
     def __init__(self, topic=None, quotes=[]):
         """
-        创建对象的时候给定两个参数, 话题 topic 和 名言 quotes
-        
-        Parameters
-        ----------
+        创建对象的时候给定两个参数, 话题 topic 和 名言 quotes    
         :param topic: str
             话题 topic, 例如 "创业励志名言大全"
         :param quotes: list
@@ -21,9 +18,6 @@ class Quotes():
     def show(self):
         """
         展示一个 Quotes 类的内容
-        
-        Parameters
-        ----------
         :rtype: None
         """
 

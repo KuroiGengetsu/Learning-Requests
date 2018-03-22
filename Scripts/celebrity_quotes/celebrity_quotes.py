@@ -11,14 +11,8 @@ from quotes import Quotes
 def get_html(url):
     """
     从给定 url 发出请求, 并返回响应
-
-    Parameters
-    ----------
     :param url: str
         给定的 URL
-
-    Return
-    -------
     :rtype: Response Object
         Response 对象
     """
@@ -51,13 +45,9 @@ TOPIC_LINK_REGEX = re.compile(r'<a title="(.*?)".*?href="(show/\w+)">')
 def get_topics(text):
     """
     获得所有的话题与对应的链接
-
-    Parameters
-    ----------
-    :param text: str
-        即 r.text
+    :param text: str, 即 r.text
     :rtype: 二元元组, 迭代器
-    :return: (topic, link) 的 iterator
+    :return: (topic, link)  iterator
     """
 
     for topic in TOPIC_LINK_REGEX.finditer(text):
@@ -77,16 +67,10 @@ SPECIAL_SYMBOL_REGEX = re.compile(r'&\w+;')
 def get_quotes(url, topic):
     """
     从给定的 url 以及 话题中获得名言信息, 返回 Quotes 对象
-
-    Parameters
-    ----------
     :param url: str
         给定的 url
     :param topic: str
         话题
-
-    Return
-    -------
     :rtype: Quotes 对象
     """
 
