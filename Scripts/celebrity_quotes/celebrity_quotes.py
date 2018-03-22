@@ -64,6 +64,6 @@ def get_topics(text):
     :return: the topic name and the link
     """
 
-    for topic in TOPIC_REGEX.finditer(text):
-        yield topic.groups()
-
+#    for topic in TOPIC_REGEX.finditer(text):
+#        yield topic.groups()
+    return TOPIC_REGEX.findall(text)
